@@ -1,12 +1,19 @@
 import { useState } from "react"
-import { Button, StyleSheet, TextInput, View } from "react-native"
+import {  Pressable, StyleSheet, Text, TextInput, View } from "react-native"
 
-export const AddPlayerButton = () => {
-    const [name, setName] = useState('')
+interface AddPlayerButtonProps {
+    addPlayerFunction: (name:string)=> void
+}
+
+export const AddPlayerButton = ({addPlayerFunction}: AddPlayerButtonProps) => {
+    const [name, setName] = useState('');
+    
     return(
         <View style={styles.container}>
             <TextInput value={name} onChangeText={setName} style={styles.input}/>
-            <Button title="Add Player" color={styles.button.backgroundColor}/>
+            <Pressable style={styles.button} onPress={()=> addPlayerFunction(name)}>
+                <Text>Add Player</Text>
+            </Pressable>
         </View>
     )
 }

@@ -1,22 +1,25 @@
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
 import { ResponsiveHeight } from "../helpers/responsiveHeithFunction";
 
 export const Header = () => {
     return (
-        <View style={styles.container}>Farming Game Helper</View>
+        <View style={styles.container}><Text style={styles.text}>Farming Game Helper</Text></View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        color: 'rgb(138, 105, 68)',
         top:0,
-        fontWeight: '800',
         backgroundColor: 'tan',
         width: '100%',
         height: ResponsiveHeight(10),
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: 30
     },
+    text: {
+        fontSize: 30,
+        color: 'rgb(138, 105, 68)',
+        fontWeight: '800',
+
+    }
   });
