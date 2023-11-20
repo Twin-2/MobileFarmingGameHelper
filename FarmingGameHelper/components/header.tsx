@@ -9,7 +9,6 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
     container: {
-        position: "absolute",
         color: 'rgb(138, 105, 68)',
         top:0,
         fontWeight: '800',
