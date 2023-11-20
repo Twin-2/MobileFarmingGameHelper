@@ -5,6 +5,7 @@ import { AddPlayerButton } from './components/addPlayerButton';
 import { useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { PlayerCard } from './components/playerCard';
+import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
 const [players, setPlayers] = useState([])
@@ -15,16 +16,18 @@ function addPlayer(name) {
 }
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <AddPlayerButton addPlayerFunction={addPlayer}/>
-      <View>
-        {players.map((player)=>{
-          return <PlayerCard name={player.name}/>
-        })}
+    <PaperProvider>
+      <View style={styles.container}>
+        <Header />
+        <AddPlayerButton addPlayerFunction={addPlayer}/>
+        <View>
+          {players.map((player)=>{
+            return <PlayerCard name={player.name}/>
+          })}
+        </View>
+        <StatusBar style="auto" />
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </PaperProvider>
   );
 }
 
