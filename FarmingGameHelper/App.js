@@ -8,7 +8,7 @@ import { PlayerCard } from './components/playerCard';
 import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
-const [players, setPlayers] = useState([{name: 'David', id:'123456789'}])
+const [players, setPlayers] = useState([])
 
 function addPlayer(name) {
   setPlayers([...players, {name: name, id: uuidv4()}]);
