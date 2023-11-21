@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         top:0,
         backgroundColor: 'tan',
         width: '100%',
-        height: ResponsiveHeight(10),
+        height: ResponsiveHeight(8),
         alignItems: 'center',
         justifyContent: 'center',
     },
