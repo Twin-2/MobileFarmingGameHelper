@@ -12,17 +12,20 @@ const [players, setPlayers] = useState([{name: 'David', id:'123456789'}])
 
 function addPlayer(name) {
   setPlayers([...players, {name: name, id: uuidv4()}]);
-  console.log(players)
+}
+
+function removePlayer(id) {
+  setPlayers(players.filter((player) => player.id !== id));
 }
 
   return (
     <PaperProvider>
       <View style={styles.container}>
         <Header />
-        <AddPlayerButton addPlayerFunction={addPlayer}/>
+        <AddPlayerButton addPlayerFunction={addPlayer} />
         <View>
           {players.map((player)=>{
-            return <PlayerCard name={player.name}/>
+            return <PlayerCard name={player.name} id={player.id} removePlayerFunction={removePlayer}/>
           })}
         </View>
         <StatusBar style="auto" />

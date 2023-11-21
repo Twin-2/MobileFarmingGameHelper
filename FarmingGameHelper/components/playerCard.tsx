@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { StyleSheet, TextInput, View, Pressable} from "react-native"
-import {  Card, Checkbox, Divider, List, Text } from "react-native-paper"
+import {  Card, Checkbox, Divider, IconButton, List, Text } from "react-native-paper"
 import RNPickerSelect from 'react-native-picker-select';
 import operatingExpense, { crops } from "../lib/operatingExpense";
 import harvestTable from "../lib/harvestTable";
 
 type PlayerCardProps = {
-    name: string
+    name: string;
+    id: string;
+    removePlayerFunction: (id:string)=> void
 }
 
 export type Crops = {
@@ -27,9 +29,10 @@ export type Player = {
     debt:number;
 }
 
-export const PlayerCard = ({name}:PlayerCardProps) => {
+export const PlayerCard = ({name, id, removePlayerFunction}:PlayerCardProps) => {
     const basePlayer = {
         name: name,
+        id: id,
         debt: 10000,
         crops: {
             hay: 10,
@@ -59,12 +62,9 @@ export const PlayerCard = ({name}:PlayerCardProps) => {
 
     function income() {
         const roll = rollDie();
-        console.log(roll, selectedCrop);
         let op = operatingExpense(player, selectedCrop);
-        console.log("OP", op);
         const harvestCalcaulation = calculateHarvest(selectedCrop, player.crops[selectedCrop], roll);
         let result = harvestCalcaulation - op;
-        console.log("income", player);
         setHarvestValue(result);
       };
 
@@ -74,7 +74,10 @@ export const PlayerCard = ({name}:PlayerCardProps) => {
 
     return(
         <Card style={styles.card}>
-            <Card.Title title={name}/>
+            <View style={styles.headerBox}>
+                <Card.Title title={name}/>
+                <IconButton icon={"close"} onPress={()=> removePlayerFunction(player.id)}/>
+            </View>
             <Card.Content>
                 {/* player crops */}
                 <List.Section>
@@ -198,5 +201,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width:110,
         height: 30
+    },
+    headerBox: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 })

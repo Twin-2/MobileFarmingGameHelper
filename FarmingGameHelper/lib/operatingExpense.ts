@@ -37,7 +37,6 @@ export default function operatingExpense(player: Player, crop: crops): number {
     operatingExpenseTable[
       Math.floor(Math.random() * (operatingExpenseTable.length - 0))
     ];
-  console.log("raw OP", operatingExpense);
   switch (operatingExpense) {
     case "noHarvester":
       if (!player.equipment.harvester) {

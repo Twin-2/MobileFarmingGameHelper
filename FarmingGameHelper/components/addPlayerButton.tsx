@@ -2,7 +2,7 @@ import { useState } from "react"
 import {  Pressable, StyleSheet, Text, TextInput, View } from "react-native"
 
 interface AddPlayerButtonProps {
-    addPlayerFunction: (name:string)=> void
+    addPlayerFunction: (name:string)=> void;
 }
 
 export const AddPlayerButton = ({addPlayerFunction}: AddPlayerButtonProps) => {
