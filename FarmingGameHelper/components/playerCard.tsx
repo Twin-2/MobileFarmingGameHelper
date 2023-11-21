@@ -20,7 +20,7 @@ export type Crops = {
 
 export type Player = {
     name: string;
-    id?: string;
+    id: string;
     crops: Crops;
     equipment: {
         tractor: boolean;
